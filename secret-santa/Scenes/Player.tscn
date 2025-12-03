@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dh44kj0frekn1"]
+[gd_scene load_steps=51 format=3 uid="uid://dh44kj0frekn1"]
 
 [ext_resource type="Texture2D" uid="uid://ceivv4h07wa53" path="res://Assets/Sprites/Characters/SantaMan/FallwithHsp.png" id="1_nn08x"]
 [ext_resource type="Texture2D" uid="uid://u2522nshp3js" path="res://Assets/Sprites/Characters/SantaMan/FallR.png" id="2_52ee3"]
@@ -276,7 +276,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hkrn1")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump",
 "speed": 15.0
 }, {
@@ -334,8 +334,15 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn08x"]
+size = Vector2(8, 17)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tbv6f")
-animation = &"jump"
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_nn08x")
