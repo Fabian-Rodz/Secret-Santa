@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://mflr6cb60xwn"]
+
+[ext_resource type="Texture2D" uid="uid://4v1c5xgdgvfa" path="res://Assets/Sprites/Characters/Drone/drone dog.png" id="1_oodny"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouh8p"]
+atlas = ExtResource("1_oodny")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftjkk"]
+atlas = ExtResource("1_oodny")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6fab"]
+atlas = ExtResource("1_oodny")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84th3"]
+atlas = ExtResource("1_oodny")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elu52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouh8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftjkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6fab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84th3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8k6d"]
+size = Vector2(46, 16)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_elu52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_t8k6d")
