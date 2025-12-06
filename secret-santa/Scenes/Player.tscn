@@ -1,6 +1,6 @@
 [gd_scene load_steps=50 format=3 uid="uid://dh44kj0frekn1"]
 
-[ext_resource type="Script" uid="uid://b1k1uh3fshtj1" path="res://playerController.gd" id="1_52ee3"]
+[ext_resource type="Script" uid="uid://b1k1uh3fshtj1" path="res://Scripts/playerController.gd" id="1_52ee3"]
 [ext_resource type="Texture2D" uid="uid://ceivv4h07wa53" path="res://Assets/Sprites/Characters/SantaMan/FallwithHsp.png" id="1_nn08x"]
 [ext_resource type="Texture2D" uid="uid://u2522nshp3js" path="res://Assets/Sprites/Characters/SantaMan/FallR.png" id="2_52ee3"]
 [ext_resource type="Texture2D" uid="uid://08b3slix6juq" path="res://Assets/Sprites/Characters/SantaMan/FallStart.png" id="3_bhhdu"]
@@ -322,6 +322,7 @@ radius = 4.1231055
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(0, -10)
+collision_mask = 2
 script = ExtResource("1_52ee3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -336,3 +337,13 @@ shape = SubResource("RectangleShape2D_nn08x")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_nn08x")
+
+[node name="StompZone" type="Area2D" parent="."]
+scale = Vector2(1.01, 1.01)
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StompZone"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_nn08x")
+
+[connection signal="body_entered" from="StompZone" to="." method="_on_stomp_zone_body_entered"]
